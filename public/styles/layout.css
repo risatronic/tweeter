@@ -59,7 +59,7 @@ textarea {
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
-  height: 40px;
+  height: 38px;
   margin-bottom: 2px;
   border-bottom-width: 5px;
   resize: none;
@@ -78,4 +78,59 @@ button {
   color: #ffffff;
   background-color: #4056A1;
   float: left;
+}
+
+.negative {
+  color: #ff0000;
+}
+
+article {
+  margin-top: 10px;
+  border: solid;
+  padding: 8px;
+  flex-direction: column;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  margin-bottom: 1em;
+}
+
+article header {
+  height: 3em;
+  padding-top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #f4f1ec;
+  background-image: unset;
+}
+
+p {
+  border-bottom: solid;
+  align-content: center;
+  padding-bottom: 1em;
+  padding: 10px;
+  margin: auto;
+}
+
+article footer {
+  font-size: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+article header a {
+  display: none;
+  color: #b0c4de;
+}
+
+article:hover header a{
+  display: block;
+}
+
+article:hover {
+  box-shadow: 10px 10px 1px 1px #b0c4de;
 }
