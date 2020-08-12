@@ -31,6 +31,7 @@ body {
 
 main {
    width: 90%;
+   height: auto;
    position: relative;
    align-self: center;
    justify-content: space-around;

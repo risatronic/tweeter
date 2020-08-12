@@ -7,15 +7,8 @@
 
 $(document).ready(function () {
 
-  const createTweetElement = function (tweet) {
-
-    const username = tweet.user.name;
-    const avatar = tweet.user.avatars;
-    const handle = tweet.user.handle;
-
-    const text = tweet.content.text;
-
-    const date = new Date(tweet.created_at);
+  const generateTimeStamp = function(time) {
+    const date = new Date(time);
     const currentDate = new Date();
 
     let timeStamp = '';
@@ -23,7 +16,7 @@ $(document).ready(function () {
     const difference = Math.abs(currentDate - date) / 1000;
     const days = Math.floor(difference / 86400);
 
-    if(days > 365){
+    if (days > 365) {
       timeStamp = Math.floor(difference / (86400 * 365)) + ' years ago';
     } else if (days > 0) {
       timeStamp = Math.floor(difference / 86400) + ' days ago';
@@ -43,6 +36,18 @@ $(document).ready(function () {
       }
       timeStamp += ` ago`;
     }
+
+    return timeStamp;
+  };
+
+  const createTweetElement = function(tweet) {
+    const username = tweet.user.name;
+    const avatar = tweet.user.avatars;
+    const handle = tweet.user.handle;
+
+    const text = tweet.content.text;
+
+    const timeStamp = generateTimeStamp(tweet.created_at);
 
     const $tweet = $(
       `<article class="tweet">
@@ -67,13 +72,14 @@ $(document).ready(function () {
     return $tweet;
   };
 
-  const renderTweets = function(tweets) {
-    for(let tweet of tweets){
+  const renderTweets = function (tweets) {
+    for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet); 
+      $('#tweets-container').append($tweet);
     }
   };
 
+  //temp to test
   const data = [
     {
       "user": {
@@ -91,14 +97,14 @@ $(document).ready(function () {
       "user": {
         "name": "Descartes",
         "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
+        "handle": "@rd"
+      },
       "content": {
-        "text": "Je pense , donc je suis"
+        "text": "Je pense, donc je suis"
       },
       "created_at": 1461113959088
     }
   ];
 
   renderTweets(data);
-
 });

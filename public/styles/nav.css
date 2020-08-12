@@ -1,7 +1,7 @@
 nav span{
   font-family: 'Bungee', cursive;
-  color: black;
   justify-content: flex-start;
+  font-size: 2em;
 }
 
 nav {
@@ -14,4 +14,52 @@ nav {
   position: fixed;
   width: 100%;
   top: 0;
+  height: 120px;
+  z-index: 1;
+}
+
+nav div a {
+  vertical-align: center;
+  flex-direction: column;
+  padding-left: 50%;
+  padding-right: 50%;
+}
+
+/* Pulse - from https://ianlunn.github.io/Hover/#effects */
+@-webkit-keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.hvr-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
