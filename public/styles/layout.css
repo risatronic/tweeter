@@ -116,6 +116,8 @@ p {
   padding-bottom: 1em;
   padding: 10px;
   margin: auto;
+  height: auto;
+  word-wrap: break-word;
 }
 
 article.tweet footer {

@@ -4,10 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
 $(document).ready(function () {
 
-  const generateTimeStamp = function(time) {
+  const generateTimeStamp = function (time) {
     const date = new Date(time);
     const currentDate = new Date();
 
@@ -21,14 +20,14 @@ $(document).ready(function () {
     } else if (days > 0) {
       timeStamp = Math.floor(difference / 86400) + ' days ago';
     } else {
-      let hours = Math.floor(difference / 3600) % 24;
-      let minutes = Math.floor(difference / 60) % 60;
+      const hours = Math.floor(difference / 3600) % 24;
+      const minutes = Math.floor(difference / 60) % 60;
 
       if (hours > 0) {
         timeStamp = `${hours} hours`;
       }
-      if (minutes > 0) {
-        if (hours > 0) {
+      if (minutes >= 0) {
+        if (hours > 0 && minutes !== 0) {
           timeStamp += ` and ${minutes} minutes`;
         } else {
           timeStamp = `${minutes} minutes`;
@@ -40,7 +39,7 @@ $(document).ready(function () {
     return timeStamp;
   };
 
-  const createTweetElement = function(tweet) {
+  const createTweetElement = function (tweet) {
     const username = tweet.user.name;
     const avatar = tweet.user.avatars;
     const handle = tweet.user.handle;
@@ -73,38 +72,37 @@ $(document).ready(function () {
   };
 
   const renderTweets = function (tweets) {
-    for (let tweet of tweets) {
+    for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   };
 
-  //temp to test
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense, donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
+  const loadTweets = function () {
+    $.getJSON('/tweets', function (data) {
+      console.log(data);
+      renderTweets(data);
+    })
+  };
 
-  renderTweets(data);
+  loadTweets();
+
+  $('#submit-tweet').on('submit', function (event) {
+    event.preventDefault();
+
+    const data = $(this).serialize();
+    const text = jQuery('textarea#tweet-text').val();
+    // console.log();
+    if (!text) {
+      alert('Tweet cannot be empty');
+    } else if (text.length > 140) {
+      alert('Tweet must be 140 characters or less');
+    } else {
+      $.post('/tweets', data);
+      // $('textarea#tweet-text').value = "";
+      // $('#tweets-container').empty();
+
+    }
+  });
+
 });
