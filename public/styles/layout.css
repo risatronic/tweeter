@@ -84,7 +84,7 @@ button {
   color: #ff0000;
 }
 
-article {
+article.tweet {
   margin-top: 10px;
   border: solid;
   padding: 8px;
@@ -95,9 +95,10 @@ article {
   margin-bottom: 1em;
 }
 
-article header {
+#tweet {
   height: 3em;
   padding-top: 0;
+  margin-top: 0;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -105,6 +106,8 @@ article header {
   background-color: #f4f1ec;
   background-image: unset;
 }
+
+
 
 p {
   border-bottom: solid;
@@ -114,7 +117,7 @@ p {
   margin: auto;
 }
 
-article footer {
+article.tweet footer {
   font-size: 15px;
   padding: 10px;
   display: flex;
@@ -122,15 +125,20 @@ article footer {
   justify-content: space-between;
 }
 
-article header a {
+article.tweet header a {
   display: none;
   color: #b0c4de;
+  justify-self: flex-end;
 }
 
-article:hover header a{
+article.tweet:hover header a{
   display: block;
 }
 
-article:hover {
+article.tweet:hover {
   box-shadow: 10px 10px 1px 1px #b0c4de;
+}
+
+img {
+  vertical-align: middle;
 }
