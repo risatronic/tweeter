@@ -142,3 +142,9 @@ article.tweet:hover {
 img {
   vertical-align: middle;
 }
+
+footer a i{
+  font-weight: 900;
+  color: #4056A1;
+  padding: 2px;
+}

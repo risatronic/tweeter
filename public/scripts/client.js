@@ -23,7 +23,9 @@ $(document).ready(function () {
     const difference = Math.abs(currentDate - date) / 1000;
     const days = Math.floor(difference / 86400);
 
-    if (days > 0) {
+    if(days > 365){
+      timeStamp = Math.floor(difference / (86400 * 365)) + ' years ago';
+    } else if (days > 0) {
       timeStamp = Math.floor(difference / 86400) + ' days ago';
     } else {
       let hours = Math.floor(difference / 3600) % 24;
@@ -42,18 +44,25 @@ $(document).ready(function () {
       timeStamp += ` ago`;
     }
 
-    const $tweet = $(`<article class="tweet">
-                        <header id="tweet">
-                          <div>
-                            <img src=${avatar}> ${username}
-                          </div> 
-                          <a name="handle"> ${handle} </a>
-                        </header>
-                        <p> ${text} </p>
-                        <footer>
-                          ${timeStamp} <a> [icons] </a>
-                        </footer>
-                      </article>`);
+    const $tweet = $(
+      `<article class="tweet">
+        <header id="tweet">
+          <div>
+            <img src=${avatar}> ${username}
+          </div> 
+          <a name="handle">${handle}</a>
+        </header>
+        <p>${text}</p>
+        <footer>
+          ${timeStamp} 
+          <a>
+            <i class="fa fa-flag"></i>
+            <i class="fa fa-retweet"></i>
+            <i class="fa fa-heart"></i>
+          </a>
+        </footer>
+      </article>`
+    );
 
     return $tweet;
   };
