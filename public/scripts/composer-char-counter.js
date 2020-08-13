@@ -6,6 +6,9 @@ $(document).ready(function() {
       $('output.counter').addClass('negative');
     } else {
       $('output.counter').removeClass('negative');
+    }
+
+    if(length >= 0){
       $('#error').slideUp('fast');
     }
 
