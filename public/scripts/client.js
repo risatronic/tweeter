@@ -4,22 +4,22 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
   loadTweets();
 
-  $('#submit-tweet').on('submit', function(event) {
+  $('#submit-tweet').on('submit', function (event) {
     event.preventDefault();
     //
 
     const data = $(this).serialize();
-    const text = jQuery('textarea#tweet-text').val();
+    const text = $('textarea#tweet-text').val(); //$text??
 
     if (text.length === 0) {
       $('#error')
         .html('Tweet cannot be empty!')
         .hide()
         .slideDown('fast');
-      $('textarea#tweet-text').on('keyup', function() {
+      $('textarea#tweet-text').on('keyup', function () {
         $('#error').slideUp('fast');
       });
     } else if (text.length > 140) {
@@ -35,13 +35,27 @@ $(document).ready(function() {
         loadTweets();
         $('output.counter').text(140);
         this.reset();
+        
       });
     }
+    $('textarea#tweet-text').focus();
   });
 
+  let clicked = false;
+
+  $('#compose-tweet').on('click', function () {
+    if (!clicked) {
+      $('section.new-tweet').slideUp('slow');
+      clicked = true;
+    } else if (clicked) {
+      $('section.new-tweet').slideDown('slow');
+      $('textarea#tweet-text').focus();
+      clicked = false;
+    }
+  });
 });
 
-const generateTimeStamp = function(time) {
+const generateTimeStamp = function (time) {
   const date = new Date(time);
   const currentDate = new Date();
 
@@ -74,7 +88,7 @@ const generateTimeStamp = function(time) {
   return timeStamp;
 };
 
-const createTweetElement = function(tweet) {
+const createTweetElement = function (tweet) {
   const username = tweet.user.name;
   const avatar = tweet.user.avatars;
   const handle = tweet.user.handle;
@@ -91,13 +105,13 @@ const createTweetElement = function(tweet) {
         </div> 
         <a name="handle">${handle}</a>
       </header>
-      <p>${text}</p>
+      <p class="tweet">${text}</p>
       <footer>
         ${timeStamp} 
         <a>
-          <i class="fa fa-flag"></i>
-          <i class="fa fa-retweet"></i>
-          <i class="fa fa-heart"></i>
+          <i class="fa fa-flag" id="report"></i>
+          <i class="fa fa-retweet" id="retweet"></i>
+          <i class="fa fa-heart" id="love"></i>
         </a>
       </footer>
     </article>`
@@ -106,21 +120,21 @@ const createTweetElement = function(tweet) {
   return $tweet;
 };
 
-const renderTweets = function(tweets) {
+const renderTweets = function (tweets) {
   for (const tweet of tweets) {
     const $tweet = createTweetElement(tweet);
     $('#tweets-container').prepend($tweet);
   }
 };
 
-const loadTweets = function() {
-  $.getJSON('/tweets', function(data) {
+const loadTweets = function () {
+  $.getJSON('/tweets', function (data) {
     $('#tweets-container').empty();
     renderTweets(data);
   });
 };
 
-const escape = function(string) {
+const escape = function (string) {
   const div = document.createElement('div');
   div.appendChild(document.createTextNode(string));
   return div.innerHTML;

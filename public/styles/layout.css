@@ -71,6 +71,10 @@ textarea:focus {
   outline: none;
 }
 
+button:focus {
+  outline: none;
+}
+
 output.counter {
   font-family: 'Bungee', cursive;
 }
@@ -109,7 +113,7 @@ article.tweet {
   background-image: unset;
 }
 
-p {
+p.tweet {
   border-bottom: solid;
   align-content: center;
   padding-bottom: 1em;

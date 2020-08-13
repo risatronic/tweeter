@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-  
+
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -33,12 +33,12 @@
 <body>
   <!-- Top nav bar (fixed) -->
   <nav>
-    <span>tweeter</span>
-    <div>
+    <span id="app-name">tweeter</span>
+    <button id="compose-tweet">
       <b>Write</b> a new tweet
       <br>
-      <a  class="hvr-pulse"><i class="fa fa-angle-double-down"></i></a>
-    </div>
+      <i class="fa fa-angle-double-down hvr-pulse"></i>
+    </button>
   </nav>
 
   <header name="user">
@@ -70,12 +70,3 @@
 </body>
 
 </html>
-
-<!-- font-family: 'Bungee', cursive;
-font-family: 'Source Sans Pro', sans-serif; -->
-
-      <!-- <article class="tweet">
-        <header id="tweet">[img] Name <a name="handle">@handle</a></header>
-        <p>Tweet text goes here!</p>
-        <footer>6 days ago <a>[icons]</a></footer>
-      </article> -->
