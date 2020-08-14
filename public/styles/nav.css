@@ -18,6 +18,10 @@ nav {
   z-index: 1;
 }
 
+.scrolled {
+  background-color: transparent;
+}
+
 #compose-tweet {
   font-family: 'Source Sans Pro', sans-serif;
   height: auto;
@@ -52,14 +56,6 @@ nav {
     -webkit-transform: scale(0.7);
     transform: scale(0.7);
   }
-}
-
-.hvr-pulse {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
 #compose-tweet:hover i {

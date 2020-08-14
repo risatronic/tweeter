@@ -6,10 +6,10 @@
 
 $(document).ready(function () {
   loadTweets();
+  $('#error').hide();
 
   $('#submit-tweet').on('submit', function (event) {
     event.preventDefault();
-    //
 
     const data = $(this).serialize();
     const text = $('textarea#tweet-text').val(); //$text??
@@ -35,7 +35,7 @@ $(document).ready(function () {
         loadTweets();
         $('output.counter').text(140);
         this.reset();
-        
+
       });
     }
     $('textarea#tweet-text').focus();
@@ -53,6 +53,31 @@ $(document).ready(function () {
       clicked = false;
     }
   });
+
+  $('#scroll-btn').on('click', function () {
+    $('section.new-tweet').hide('0');
+    setTimeout(() => {
+      $('section.new-tweet').slideDown('slow');
+      $('#scroll-btn').hide();
+    }, 600);
+    setTimeout(() => {
+      $('textarea#tweet-text').focus();
+    }, 605)
+  });
+
+  $(window).scroll(function () {
+    const scrollTop = $(window).scrollTop();
+
+    if (scrollTop >= 120) {
+      $('#nav').addClass('scrolled');
+      $('#compose-tweet').hide();
+      $('#scroll-btn').show();
+    } else {
+      $('#nav').removeClass('scrolled');
+      $('#compose-tweet').show();
+      $('#scroll-btn').hide();
+    }
+  });
 });
 
 const generateTimeStamp = function (time) {
@@ -64,26 +89,43 @@ const generateTimeStamp = function (time) {
   const difference = Math.abs(currentDate - date) / 1000;
   const days = Math.floor(difference / 86400);
 
-  if (days > 365) {
-    timeStamp = Math.floor(difference / (86400 * 365)) + ' years ago';
+  if (days >= 365) {
+    const years = Math.floor(difference / (86400 * 365));
+    console.log('years ', years);
+    timeStamp = `${years} year`;
+    if (years >= 2) {
+      timeStamp += 's';
+    }
   } else if (days > 0) {
-    timeStamp = Math.floor(difference / 86400) + ' days ago';
+    timeStamp = Math.floor(difference / 86400) + ' day';
+    if (days !== 1) {
+      timeStamp += 's';
+    }
   } else {
     const hours = Math.floor(difference / 3600) % 24;
     const minutes = Math.floor(difference / 60) % 60;
 
-    if (hours > 0) {
-      timeStamp = `${hours} hours`;
+    if (hours + minutes === 0) {
+      return 'Just now!';
     }
-    if (minutes >= 0) {
-      if (hours > 0 && minutes !== 0) {
-        timeStamp += ` and ${minutes} minutes`;
-      } else {
-        timeStamp = `${minutes} minutes`;
+
+    if (hours > 0) {
+      timeStamp = `${hours} hour`;
+      if (hours > 1) {
+        timeStamp += 's';
       }
     }
-    timeStamp += ` ago`;
+    if (minutes > 0) {
+      if (hours > 0) {
+        timeStamp += ` and `;
+      }
+      timeStamp = `${minutes} minute`;
+      if (minutes !== 1) {
+        timeStamp += 's';
+      }
+    }
   }
+  timeStamp += ` ago`;
 
   return timeStamp;
 };

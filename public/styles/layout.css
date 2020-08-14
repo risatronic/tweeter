@@ -5,6 +5,7 @@
  */
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -162,4 +163,68 @@ footer a i{
   font-weight: bold;
   display: flex;
   float: left;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
 }
+
+#scroll-up {
+  position: fixed;
+  bottom: 1%;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 86.55%;
+}
+
+#scroll-up button {
+  border-radius: 50%;
+  padding: 10px;
+  padding-bottom: 15px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  border: transparent;
+  display: none;
+}
+
+#scroll-up a {
+  color: white;
+  text-decoration: none;
+}
+
+@-webkit-keyframes hvr-pulse2 {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes hvr-pulse2 {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+#scroll-up:hover i {
+  -webkit-animation-name: hvr-pulse2;
+  animation-name: hvr-pulse2;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
