@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 120px;
+  justify-content: flex-start;
 }
 
 /*
@@ -132,14 +133,14 @@ article.tweet footer {
   justify-content: space-between;
 }
 
-article.tweet header a {
+article.tweet a {
   display: none;
   color: #b0c4de;
   justify-self: flex-end;
   vertical-align: middle;
 }
 
-article.tweet:hover header a{
+article.tweet:hover a{
   display: block;
 }
 
@@ -173,6 +174,7 @@ footer a i{
   display: flex;
   justify-content: flex-end;
   margin-left: 86.55%;
+  right: 1%;
 }
 
 #scroll-up button {
@@ -228,3 +230,16 @@ footer a i{
   animation-iteration-count: infinite;
 }
 
+@media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+  }
+
+  main {
+    width: 45%;
+    margin-right: 5%;
+  }
+}

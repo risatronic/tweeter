@@ -67,6 +67,7 @@ $(document).ready(function () {
 
   $(window).scroll(function () {
     const scrollTop = $(window).scrollTop();
+    const width = $(window).width();
 
     if (scrollTop >= 120) {
       $('#nav').addClass('scrolled');
@@ -150,7 +151,7 @@ const createTweetElement = function (tweet) {
       <p class="tweet">${text}</p>
       <footer>
         ${timeStamp} 
-        <a>
+        <a class="icons">
           <i class="fa fa-flag" id="report"></i>
           <i class="fa fa-retweet" id="retweet"></i>
           <i class="fa fa-heart" id="love"></i>

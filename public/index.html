@@ -32,7 +32,9 @@
 
 <body>
   <!-- Top nav bar (fixed) -->
-  <nav id="nav">
+
+
+  <nav>
     <span id="app-name">tweeter</span>
     <button id="compose-tweet">
       <b>Write</b> a new tweet
@@ -41,7 +43,9 @@
     </button>
   </nav>
 
-  <header name="user">
+  <div id="spacer"></div>
+
+  <header class="top">
     <div>
       <img src="/images/profile-hex.png">
     </div>
@@ -59,7 +63,7 @@
         <textarea name="text" id="tweet-text"></textarea>
         <div id="error"></div>
         <div>
-          <button type="submit">Tweet</button>
+          <button type="submit" id="post-tweet">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>

@@ -5,7 +5,8 @@
 }
 
 nav {
-  background-color: #4056A1;
+  background-color: #6d1499;
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
   color: #ffffff;
   font-family: inherit;
   padding: 1.5em;
@@ -20,12 +21,14 @@ nav {
 
 .scrolled {
   background-color: transparent;
+  background-image: unset;
 }
 
 #compose-tweet {
   font-family: 'Source Sans Pro', sans-serif;
   height: auto;
   border: transparent;
+  background-color: transparent;
 }
 
 /* nav div a {
@@ -67,4 +70,23 @@ nav {
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056A1;
+    background-image: unset;
+  }
+
+  #compose-tweet, #app-name {
+    width: 20%;
+    height: auto;
+  }
+}
+
+#spacer {
+  background-color: #6d1499;
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  display: block;
+  height: 120px;
 }
