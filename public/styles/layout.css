@@ -197,6 +197,8 @@ footer a i{
   text-decoration: none;
 }
 
+/* Pulse - from https://ianlunn.github.io/Hover/#effects */
+
 @-webkit-keyframes hvr-pulse2 {
   25% {
     -webkit-transform: scale(1.1);
