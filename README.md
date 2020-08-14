@@ -10,10 +10,13 @@ This repository is the starter code for the project: Students will fork and clon
 !["Timestamps account for hours/minutes, days, or years; tweets change on hover"](https://github.com/risatronic/tweeter/blob/master/docs/2-timestamp-hover.png)
 !["Cannot submit an empty tweet"](https://github.com/risatronic/tweeter/blob/master/docs/3-empty-tweet.png)
 !["Page changes as you shrink width or scroll down"](https://github.com/risatronic/tweeter/blob/master/docs/4-responsive.png)
+!["Update of how page actually looks when scrolled down"](https://github.com/risatronic/tweeter/blob/master/docs/5-oops.png)
 
 ## Known Issues
 
-Counter watcher to hide error message after trying to submit a tweet that is too long does not work after triggering the error message that occurs when a user tries to submit an empty tweet, it disappears on first key-stroke but is re-triggered if trying to submit a too-long tweet again, not part of core functionality so put on the backburner
+* Had accidentally deleted class before screenshotting other functionality, final screenshot reflects current state
+
+* Counter watcher to hide error message after trying to submit a tweet that is too long does not work after triggering the error message that occurs when a user tries to submit an empty tweet, it disappears on first key-stroke but is re-triggered if trying to submit a too-long tweet again, not part of core functionality so put on the backburner
 
 ## Getting Started
 
